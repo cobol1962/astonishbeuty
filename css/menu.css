@@ -1,0 +1,44 @@
+#centeredmenu {
+   float:left;
+   width:100%;
+   overflow:hidden;
+   position:relative;
+}
+#centeredmenu ul {
+   clear:left;
+   float:left;
+   list-style:none;
+   margin:0;
+   padding:0;
+   position:relative;
+   left:50%;
+   text-align:center;
+}
+#centeredmenu ul li {
+   display:block;
+   float:left;
+   list-style:none;
+   margin:0;
+   padding:0;
+   position:relative;
+   right:50%;
+}
+#centeredmenu ul li a {
+   display:block;
+   margin:0 0 0 1px;
+   padding:3px 10px;
+   color:#761370;
+   text-decoration:none;
+   line-height:1.3em;
+   font-size:28px;
+   font-family: 'bebas_neueregular';
+}
+#centeredmenu ul li a:hover {
+   color:#000;
+   text-decoration:none;
+}
+#centeredmenu ul li.active,
+#centeredmenu ul li.active:hover {
+   color:#000;
+   border-bottom: solid 2px #761370;
+}

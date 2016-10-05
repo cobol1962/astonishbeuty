@@ -1,0 +1,160 @@
+/*
+Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+*/
+
+body
+{
+	/* Font */
+	font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
+	font-size: 12px;
+
+	/* Text color */
+	color: #333;
+
+	/* Remove the background color to make it transparent */
+
+	margin: 20px;
+}
+
+  h1 { font-family: 'Crimson Text', serif; font-style: italic; font-size:24pt; color:#b87f76; margin:0; padding:0; font-weight: 400;}
+  h2 { font-family: 'Crimson Text', serif; font-style: italic;  font-size:20pt; color:#b87f76; margin:0; padding:0; font-weight: 400;}
+  .font1 { font-family: 'Cimson Text', serif; font-style: italic; font-size: 30pt; }
+  .font2 { font-family: 'Droid Sans', sans-serif; }
+  /*.font3 { font-family: 'Crimson Text', serif; font-size:13pt; }*/
+  /*.font3 { font-family: 'Lusitana', serif; font-size:12pt; }*/  
+  /*.font4 { font-family: 'Crimson Text', serif; font-size:12pt; }*/
+  .font4 { font-family: 'Lusitana', serif; font-size:12pt; }
+  .subhead1 { padding: 5px 10px 0px 20px; font-size: 22pt; color: #1a6e81; font-weight: bold; }
+  .subhead2 { padding: 5px 10px 0px 20px; font-size: 18pt; color: #1a6e81; font-weight: bold; }
+  .sectionHdr { text-align: center; font-size: 26pt; color: #a97263; margin-top: 20px; font-family: 'Crimson Text', serif; font-style: italic; }
+  .sectionHdrSml { text-align: center; font-size: 26pt; color: #a97263; margin-top: 20px; font-family: 'Crimson Text', serif; font-style: italic; }
+
+  .cols2, .venueContainer { width: 100%; margin: 0 auto; }
+  .col1 { width: 40%; float: left; margin-right: 50px; }
+  .col2 { width: 45%; float: right;  }
+  
+  .indexIntro { width: 1078px; margin: 0 auto; }
+  .indexIntroCol1 { width: 45%; float: left; }
+  .indexIntroCol2 { width: 45%; float: left;  margin-left:10%; }
+  
+  .imgBorder { border: 3px solid #D4AE85; box-shadow: 1px 1px 3px #696969; margin: 10px; }
+  
+  .home_img {width: 100%; height: auto;}
+
+  .intro-title {width: 624px; margin: 0 auto; margin-bottom:15px; text-align:center}
+  .home_boxes {float:none; display:inline-block; margin-bottom:20px; width:350px; height:131px; margin-right:15px; background-image:url(../images/box_bg.png)}
+  .home_boxes-thumb {float:left; margin-left:8px; margin-top:4px; display: inline-block;}
+  .home_boxes-text {float:left; margin-left:8px; margin-top:14%; color:#a97263; font-weight:bold; font-style:italic; text-align:left}
+  
+  .home_boxes01 {float:none; display:inline-block; margin-bottom:20px; width:350px; height:131px; margin-right:15px; background-image:url(../images/box_bg_01.png)}
+  .home_boxes02 {float:none; display:inline-block; margin-bottom:20px; width:350px; height:131px; margin-right:15px; background-image:url(../images/box_bg_02.png)}
+
+  .tblBg1 { padding: 10px; background: #eee4d9; font-size: 12pt; }
+  .tblBg2 { padding: 10px; background: #fff; font-size: 12pt; border-bottom: solid 1px #c38b3f; }
+  .tblBg2 li { margin-bottom: 20px; }
+  a {text-decoration:none; color:#17536f;}
+  a:hover {color: #666}
+  
+  footer { background: #eee4d9; padding: 20px; }
+  .finner { width: 1100px; margin: 0 auto; line-height: 21pt; }
+  .fcol1 { width: 30%; float: left; }
+  .fcol2 { width: 40%; float: left; }
+  .fcol3 { width: 20%; float: left; }
+
+@font-face {  
+	  font-family: "GreatVibes";  
+	  src: url('../fonts/greatvibes.otf'); /* IE */  
+	  src: local("GreatVibes"), url('../fonts/greatvibes.otf') format("opentype"); /* non-IE */  
+	}  
+
+@font-face {  
+	  font-family: "Laneup";  
+	  src: url('../fonts/laneup.ttf'); /* IE */  
+	  src: local("Laneup"), url('../fonts/laneup.ttf') format("truetype"); /* non-IE */  
+	}  
+	
+	
+.cke_editable
+{
+	font-size: 13px;
+	line-height: 1.6em;
+}
+
+blockquote
+{
+	font-style: italic;
+	font-family: Georgia, Times, "Times New Roman", serif;
+	padding: 2px 0;
+	border-style: solid;
+	border-color: #ccc;
+	border-width: 0;
+}
+
+.cke_contents_ltr blockquote
+{
+	padding-left: 20px;
+	padding-right: 8px;
+	border-left-width: 5px;
+}
+
+.cke_contents_rtl blockquote
+{
+	padding-left: 8px;
+	padding-right: 20px;
+	border-right-width: 5px;
+}
+
+a
+{
+	color: #0782C1;
+}
+
+ol,ul,dl
+{
+	/* IE7: reset rtl list margin. (#7334) */
+	*margin-right: 0px;
+	/* preserved spaces for list items with text direction other than the list. (#6249,#8049)*/
+	padding: 0 40px;
+}
+
+h1,h2,h3,h4,h5,h6
+{
+	font-weight: normal;
+	line-height: 1.2em;
+}
+
+hr
+{
+	border: 0px;
+	border-top: 1px solid #ccc;
+}
+
+img.right {
+    border: 1px solid #ccc;
+    float: right;
+    margin-left: 15px;
+    padding: 5px;
+}
+
+img.left {
+    border: 1px solid #ccc;
+    float: left;
+    margin-right: 15px;
+    padding: 5px;
+}
+
+img:hover {
+	opacity: .9;
+	filter: alpha(opacity = 90);
+}
+
+pre
+{
+	white-space: pre-wrap; /* CSS 2.1 */
+	word-wrap: break-word; /* IE7 */
+}
+
+.marker {
+    background-color: Yellow;
+}

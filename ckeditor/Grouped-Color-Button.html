@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Using Grouped Color Button Plugin &mdash; CKEditor Sample</title>
+	<meta content="text/html; charset=utf-8" http-equiv="content-type" />
+	<script type="text/javascript" src="jquery-1.7.2.min"></script>
+	<script type="text/javascript" src="ckeditor.js"></script>
+	<link href="sample.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<h1 class="samples">CKEditor Sample &mdash; Using the Grouped Color Button Plugin</h1>
+	<p>
+		<label for="editor1">CKEditor using the <code>groupedcolorbutton</code> plugin:</label>
+		<textarea cols="80" id="editor1" name="editor1" rows="10">
+			&lt;p&gt;Change the color...&lt;/p&gt;
+		</textarea>
+	</p>
+	
+	<script type="text/javascript">//<![CDATA[
+	
+	CKEDITOR.replace( 'editor1', {
+		extraPlugins : 'groupedcolorbutton',
+		groupedColorButton_colors : 
+		[
+			{
+				title: "Brand Colors",
+				colors: "A70000,818181,000,BE671A"
+			},
+			{
+				title: "Default Colors",
+				colors: CKEDITOR.config.colorButton_colors
+			}
+		],
+		toolbar: 
+		[
+			["Source", "-", "TextColor", "BGColor", "-", "About"]
+		]
+	});
+
+	//]]></script>
+	
+	<div id="footer">
+		<hr />
+		<p>CKEditor - The text editor for the Internet - <a class="samples" href="http://ckeditor.com/">http://ckeditor.com</a></p>
+		<p id="copy">Copyright &copy; 2003-2011, <a class="samples" href="http://cksource.com/">CKSource</a> - Frederico
+			Knabben. All rights reserved.</p>
+	</div>
+</body>
+</html>
