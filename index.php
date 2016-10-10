@@ -84,7 +84,7 @@
                 
                    <div class="content" cms="body1">
                  
-                   
+					    <div cms="body1"></cms>
                         <!-- CATEGORIES -->
                         <div class="product-image-holder">
                             <a href="#"><img src="images/product-01.jpg" class="product-image responsive-img" style="border:none" alt="HAIR EXTENSIONS" /></a>

@@ -10,9 +10,11 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// The toolbar groups arrangement, optimized for two toolbar rows.
 
-
+config.language='en';
 config.toolbar = 'Post';
+config.extraPlugins = 'popup';
 config.extraPlugins = 'font';
+config.extraPlugins = 'filebrowser';
 config.toolbar_Post = [
 	//{ name: 'styles', items: [ 'Styles', 'Format' ] },
 	{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup', 'spellchecker' ], items: [ 'Undo', 'Redo', 'Bold', 'Italic', 'Strike','Underline', 'Styles', 'Font', 'FontSize', 'TextColor'] },

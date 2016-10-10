@@ -4,6 +4,7 @@
 	$page = basename($_SERVER['SCRIPT_NAME']); 
 	$page_sql = mysql_query("SELECT * FROM content WHERE `url`='" . $page . "'");
 	$page_row = mysql_fetch_assoc($page_sql);
+	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -19,12 +20,14 @@
     <link rel="stylesheet" href="css/buttons.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" /> 
+		<link rel="stylesheet" href="css/sweetalert2.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css" media="screen" /> 
-    
+    <script src="/js/editor.js?v=<?=time()?>" type="text/javascript"></script>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="js/header.js"></script>
-      
+	<script src="js/sweetalert2.js"></script>
+	<script src="js/base64.js"></script>
       
 	<script>
         $(document).ready(function(){
@@ -38,6 +41,10 @@
                     $(this).addClass("open");
                 }
             });
+			$.each($("[cms]"), function() {
+				var js_row = <?php echo json_encode($page_row );?>;
+				this.innerHTML = js_row[$(this).attr("cms")];
+			});
         });
     </script>      
       
@@ -98,5 +105,5 @@
               <!-- MOBILE MENU END --> 
     
 
-         
-
+   <div id="temp" style="display:none;"></div>      
+<script src="ckeditor/ckeditor.js"></script>
