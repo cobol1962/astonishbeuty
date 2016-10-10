@@ -85,12 +85,13 @@ if ( sConnUrl.substr(0,1) != '/' && sConnUrl.indexOf( '://' ) < 0 )
 oConnector.ConnectorUrl = sConnUrl + ( sConnUrl.indexOf('?') != -1 ? '&' : '?' ) ;
 
 var sServerPath = GetUrlParam( 'ServerPath' ) ;
+
 if ( sServerPath.length > 0 )
 	oConnector.ConnectorUrl += 'ServerPath=' + encodeURIComponent( sServerPath ) + '&' ;
 
 oConnector.ResourceType		= GetUrlParam( 'Type' ) ;
 oConnector.ShowAllTypes		= ( oConnector.ResourceType.length == 0 ) ;
-
+console.log(oConnector);
 if ( oConnector.ShowAllTypes )
 	oConnector.ResourceType = 'File' ;
 
@@ -108,6 +109,7 @@ oConnector.SendCommand = function( command, params, callBackFunction )
 	var oXML = new FCKXml() ;
 
 	if ( callBackFunction )
+		
 		oXML.LoadUrl( sUrl, callBackFunction ) ;	// Asynchronous load.
 	else
 		return oXML.LoadUrl( sUrl ) ;

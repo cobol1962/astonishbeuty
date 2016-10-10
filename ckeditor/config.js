@@ -12,6 +12,7 @@ CKEDITOR.editorConfig = function( config ) {
 
 
 config.toolbar = 'Post';
+config.extraPlugins = 'font';
 config.toolbar_Post = [
 	//{ name: 'styles', items: [ 'Styles', 'Format' ] },
 	{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup', 'spellchecker' ], items: [ 'Undo', 'Redo', 'Bold', 'Italic', 'Strike','Underline', 'Styles', 'Font', 'FontSize', 'TextColor'] },
@@ -31,7 +32,7 @@ config.toolbar_Full = [
 	{ name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar' ] },
 	{ name: 'source', items: [ 'Source' ] },
 	'/',
-	{ name: 'styles', items: [ 'Styles', 'Format','font','TextColor', 'BGColor' ] },
+	{ name: 'styles', items: [ 'Styles', 'Format','Font','FontSize','TextColor', 'BGColor' ] },
 	{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Strike', '-', 'RemoveFormat' ] },
 	{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'left', 'right', 'center', 'justify' ] }
 	

@@ -1,6 +1,7 @@
-<?php $page = basename($_SERVER['SCRIPT_NAME']); ?>
+<?php
+  	include("header.php");
+?>
 
-<? include("header.php");?>
 
 
 
@@ -40,13 +41,8 @@
             <div id="main" role="main">
               <section class="slider">
                 <div class="flexslider">
-                  <ul class="slides">
-                        <li>
-                        <img src="images/banner-01.jpg" />
-                        </li>
-                        <li>
-                        <img src="images/banner-02.jpg" />
-                        </li>
+                  <ul class="slides" id="slides">
+                     
                   </ul>
                 </div>
               </section>
@@ -72,7 +68,7 @@
         
         </div>
         </div>
-
+		
 
         <div style="clear:both;"></div>
         
@@ -86,8 +82,8 @@
             <!-- CONTENT / BLUE BACKGROUND -->
             <div class="blue-section">
                 
-                   <div class="content">
-                   
+                   <div class="content" cms="body1">
+                 
                    
                         <!-- CATEGORIES -->
                         <div class="product-image-holder">
@@ -250,3 +246,29 @@ We pride ourselves in replying to all emails within 24 hours of receipt.
  
  
 <? include("footer.php");?>
+<script type="text/javascript">
+ $(document).ready(function() {
+	$.ajax({
+		url: "browseFolder.php",
+		type:"POST",
+		data:{path: "images/home_slider"},
+		success: function(res) {
+			var imgs = res.split(";");
+			$.each(imgs,function() {
+				$("#slides").append("<li><center><img style='max-height:100%;height:100%;' src='images/home_slider/" + this + "' /></center></li>");
+      		});
+			  $('.flexslider').flexslider({
+				animation: "slide",
+				 smoothHeight: true,   
+				start: function(slider){
+				  $('body').removeClass('loading');
+				}
+			  });
+			  $.each( $('.flexslider').find("img"),function() {
+				 this.style.height = 425 + "px"; 
+				 this.style.width = "auto"; 
+			  });
+		}
+	});
+ });
+</script>

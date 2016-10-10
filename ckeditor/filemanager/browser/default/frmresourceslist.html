@@ -80,9 +80,10 @@ oListManager.GetFileRowHtml = function( fileName, fileUrl, fileSize )
 		'<\/td><\/tr>' ;
 */
         ifFolderName = '';
+		
 	return '<div style="float: left; height: 100px; margin: 5px;">' +
 				sLink +
-                                '<img src="http://demo.creativenetfx.com/slowdreams/pages/' + ifFolderName +
+                                '<img src="http://www.astonishingbeautyshop.com/cms_content/' + ifFolderName +
 				fileName +
                                 '" style="height: 100px; float: left; box-shadow: 1px 1px 3px #ccc; border: 1px solid #f1f1f1;">' +
 				'<\/a>' +
@@ -170,7 +171,7 @@ function GetFoldersAndFilesCallBack( fckXml )
 
 		// Get the optional "url" attribute. If not available, build the url.
 		var oFileUrlAtt = oNodes[j].attributes.getNamedItem('url') ;
-		var sFileUrl = oFileUrlAtt != null ? oFileUrlAtt.value : sCurrentFolderUrl + sFileName ;
+		var sFileUrl = "http://www.astonishingbeautyshop.com" + (oFileUrlAtt != null ? oFileUrlAtt.value : sCurrentFolderUrl + sFileName) ;
 
 		oHtml.Append( oListManager.GetFileRowHtml( sFileName, sFileUrl, sFileSize ) ) ;
 	}

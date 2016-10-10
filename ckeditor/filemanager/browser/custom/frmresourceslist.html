@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2008 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This page shows all resources available in a folder in the File Browser.
+-->
+<html>
+<head>
+	<title>Resources</title>
+	<link href="browser.css" type="text/css" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script type="text/javascript" src="js/common.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+	
+		<link rel="stylesheet" href="/css/sweetalert2.css" type="text/css" media="screen" /> 
+		<script type="text/javascript" src="/js/sweetalert2.js"></script>
+	<script type="text/javascript">
+
+var oListManager = new Object() ;
+
+oListManager.Clear = function()
+{
+	document.body.innerHTML = '' ;
+}
+$(document).ready(function() {
+	
+});
+function ProtectPath(path)
+{
+	path = path.replace( /\\/g, '\\\\') ;
+	path = path.replace( /'/g, '\\\'') ;
+	return path ;
+}
+function GetUrlParam( paramName )
+{
+	var oRegex = new RegExp( '[\?&]' + paramName + '=([^&]+)', 'i' ) ;
+
+	var oMatch = oRegex.exec( window.parent.location.href ) ;
+
+	if ( oMatch && oMatch.length > 1 )
+		return decodeURIComponent( oMatch[1] ) ;
+	else
+		return '' ;
+}
+var folderName = "";
+ folderName = GetUrlParam("Folder");
+oListManager.GetFolderRowHtml = function( folderName, folderPath )
+{
+	// Build the link to view the folder.
+	var sLink = '<a href="#" onclick="OpenFolder(\'' + ProtectPath( folderPath ) + '\');return false;">' ;
+
+	return '<div style="float: left; width: 60px;">' +
+				sLink +
+				'<img alt="" src="images/Folder.gif" width="50" height="50" border="0"><\/a>' +
+				sLink +
+				folderName +
+				'<\/a>' +
+		'<\/div>' ;
+}
+function deleteFile(obj) {
+	var fname = obj.getAttribute("target");
+	swal({
+	  title: 'Are you sure?',
+	  text: 'You will not be able to recover this file!',
+	  type: 'warning',
+	  showCancelButton: true,
+	  confirmButtonText: 'Yes, delete it!',
+	  cancelButtonText: 'No, keep it',
+	}).then(function() {
+		$.ajax({
+			url:"deleteFile.php",
+			type:"POST",
+			data:{path: fname},
+			success:function() {
+			  swal({
+				title:'Deleted!',
+				text: 'Your file has been deleted.',
+				type: 'success'
+			  }).then(function() {
+				window.parent.location.reload();
+			  });
+			}
+		});
+	}, function(dismiss) {
+	  // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+	  if (dismiss === 'cancel') {
+		swal(
+		  'Cancelled',
+		  'Your file is safe :)',
+		  'error'
+		);
+	  }
+	});
+}
+oListManager.GetFileRowHtml = function (fileName, fileUrl, fileSize) {
+ // Build the link to view the folder.
+
+ 
+ var sLink = '<a href="#">' ;
+ var deleteLink = '<a href="javascript:deleteFile(this);">Delete<\/a>';
+ // Get the file icon.
+ var sIcon = oIcons.GetIcon( fileName ) ;
+
+ return '<tr>' +
+	 '<td width="16">' +
+	 sLink +
+	 '<img src="http://www.astonishingbeautyshop.com/'  + folderName + "/" +
+				fileName +
+                                '" style="height: 100px; float: left; box-shadow: 1px 1px 3px #ccc; border: 1px solid #f1f1f1;">' +
+				'<\/a>' +
+	 '<\/td><td style="padding:5px;">'+'<span style="cursor:pointer;"  target="' + folderName + "/" + fileName + '" onclick="deleteFile(this);">Delete<\/span>'+'<\/td><\/tr>' ;
+}
+function DeleteFile(fileUrl) {
+ var name = fileUrl.split("/");
+ name = name[name.length - 1];
+ if(confirm("Delete "+name+"?"))
+ oConnector.SendCommand('DeleteFile', "nodeToDelete=" + fileUrl, Refresh);
+}
+function GetUrlParam( paramName )
+{
+	var oRegex = new RegExp( '[\?&]' + paramName + '=([^&]+)', 'i' ) ;
+	var oMatch = oRegex.exec( window.top.location.search ) ;
+ 
+	if ( oMatch && oMatch.length > 1 )
+		return decodeURIComponent( oMatch[1] ) ;
+	else
+		return '' ;
+}
+function OpenFolder( folderPath )
+{
+
+	// Load the resources list for this folder.
+	window.parent.frames['frmFolders'].LoadFolders( folderPath ) ;
+}
+
+function OpenFile( fileUrl )
+{
+ 
+	//PATCH: Using CKEditors API we set the file in preview window.	
+ 
+	funcNum = GetUrlParam('CKEditorFuncNum') ;
+	//fixed the issue: images are not displayed in preview window when filename contain spaces due encodeURI encoding already encoded fileUrl
+	window.top.opener.CKEDITOR.tools.callFunction( funcNum, fileUrl);
+ 
+	///////////////////////////////////
+	window.top.close() ;
+	window.top.opener.focus() ;
+}
+
+function LoadResources( resourceType, folderPath )
+{
+	oListManager.Clear() ;
+	oConnector.ResourceType = resourceType ;
+	oConnector.CurrentFolder = folderPath ;
+	oConnector.SendCommand( 'GetFoldersAndFiles', null, GetFoldersAndFilesCallBack );
+}
+
+function Refresh()
+{
+	LoadResources( oConnector.ResourceType, oConnector.CurrentFolder ) ;
+}
+
+function GetFoldersAndFilesCallBack( fckXml, folder )
+{
+	
+	var oNodes = fckXml.split(";");
+	var oHtml = new StringBuilder( '<table id="tableFiles" cellspacing="1" cellpadding="0" width="100%" border="0">' ) ;
+	for ( var j = 0 ; j < oNodes.length ; j++ )
+	{
+		
+		var sFileName = oNodes[j];
+		var sFileSize = "" ;
+
+		// Get the optional "url" attribute. If not available, build the url.
+	//	var oFileUrlAtt = oNodes[j].attributes.getNamedItem('url') ;
+		var sFileUrl = "http://www.astonishingbeautyshop.com/" + folder + "/" + oNodes[j];
+
+		oHtml.Append( oListManager.GetFileRowHtml( sFileName, sFileUrl, "" ) ) ;
+	}
+
+	oHtml.Append( '<\/table>' ) ;
+
+	document.body.innerHTML = oHtml.ToString() ;
+
+//	window.top.document.title = 'Finished processing in ' + ( ( ( new Date() ) - dTimer ) / 1000 ) + ' seconds' ;
+
+}
+
+window.onload = function()
+{
+	window.top.IsLoadedResourcesList = true ;
+}
+	</script>
+</head>
+<body class="FileArea">
+</body>
+</html>

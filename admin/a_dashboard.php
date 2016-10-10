@@ -35,7 +35,8 @@ a:hover { color: #000; text-decoration: underline; }
    <li><a href="a_admins.php">Admins</a></li>   
    <li><a href="a_page_edit.php?ID=1">Edit Home Page</a></li>
    <li><a href="a_page_edit.php?ID=2">Edit About Page</a></li>      
-   <li><a href="a_page_edit.php?ID=4">Edit Contact Page</a></li>
+   <li><a href="a_page_edit.php?ID=3">Edit Contact Page</a></li>
+	<li><a target="_blank" href="http://www.astonishingbeautyshop.com/ckeditor/filemanager/browser/custom/browser.html?Type=Image&Folder=images/home_slider">Edit slider on home page</a></li>
    </ul>       
    <h1>
       

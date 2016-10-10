@@ -830,3 +830,11 @@ nav a:last-child:after {
  .instagram a:hover {
  background-position: 0 -28px;
  } 
+.cmscontent {
+	display:inline-block;
+	width:100%;
+	
+}
+.cmscontent h1,.cmscontent h2,.cmscontent h3,.cmscontent h4 {
+	margin-top:10px !important;
+}

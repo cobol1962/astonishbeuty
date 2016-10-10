@@ -1,9 +1,4 @@
-<?php $page = basename($_SERVER['SCRIPT_NAME']); ?>
-
 <? include("header.php");?>
-
-
-
 
 <br>
 <br>
@@ -45,15 +40,11 @@
 
             <div style="width: 300px; float: left; margin-right: 20px; font-size: 15pt; line-height: 22pt;">
 
-              <strong>Astonishing Beauty Shop</strong><br />
-              135 Towne Drive, Bluffton SC<br />
-              <span style="font-size: 13pt;">(Next to Kroger - Far right side)</span><br /><br />
-
-              <div style="font-size: 13pt;">
-              <i class="fa fa-phone"></i> Phone: 843-815-4433<br />
-              <i class="fa fa-envelope"></i> <a href="mailto:info@astonishingbeautyshop.com">info@astonishingbeautyshop.com</a><br />
-              <i class="fa fa-car"></i> <a href="https://www.google.com/maps/dir/''/astonishing+beauty+shop+bluffton+sc/data=!4m5!4m4!1m0!1m2!1m1!1s0x88fb890be38eddfb:0x7fb394524f8bd395?sa=X&ved=0ahUKEwiAmvSfuLrPAhVCcT4KHZVYBMkQ9RcIczAL">Get Directions</a>
-              </div>
+             <?php for ($i=1;$i<7;$i++) { 
+				if (strpos($page_row["content"], "body" . $i) !== false) { ?>
+					<div class="cmscontent"><?=$page_row["body" . $i]?></div><br />
+				<?php } ?>
+			<?php } ?>
              
             </div>
 
